@@ -1,29 +1,57 @@
+import re
+
 def check_password_strength(password):
     score = 0
+    recommendations = []
 
-    if len(password) >= 8:
-        score += 1
-
-    if any(c.isupper() for c in password):
-        score += 1
-
-    if any(c.islower() for c in password):
-        score += 1
-
-    if any(c.isdigit() for c in password):
-        score += 1
-
-    if any(not c.isalnum() for c in password):
-        score += 1
-
-    if score <= 2:
-        return "Weak"
-    elif score <= 4:
-        return "Medium"
+    if len(password) >= 12:
+        score += 25
     else:
-        return "Strong"
+        recommendations.append("Use at least 12 characters")
+
+    if re.search(r"[A-Z]", password):
+        score += 20
+    else:
+        recommendations.append("Add uppercase letters")
+
+    if re.search(r"[a-z]", password):
+        score += 20
+    else:
+        recommendations.append("Add lowercase letters")
+
+    if re.search(r"\d", password):
+        score += 15
+    else:
+        recommendations.append("Add numbers")
+
+    if re.search(r"[!@#$%^&*(),.?\":{}|<>]", password):
+        score += 20
+    else:
+        recommendations.append("Add special characters")
+
+    if score < 40:
+        strength = "Weak"
+    elif score < 70:
+        strength = "Medium"
+    elif score < 90:
+        strength = "Strong"
+    else:
+        strength = "Very Strong"
+
+    return score, strength, recommendations
 
 
 if __name__ == "__main__":
-    pwd = input("Enter password: ")
-    print("Strength:", check_password_strength(pwd))
+    password = input("Enter Password: ")
+
+    score, strength, recommendations = check_password_strength(password)
+
+    print("\nPassword Analysis")
+    print("-----------------")
+    print("Score:", score, "/100")
+    print("Strength:", strength)
+
+    if recommendations:
+        print("\nRecommendations:")
+        for r in recommendations:
+            print("-", r)
