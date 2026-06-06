@@ -1,0 +1,23 @@
+BRUTE FORCE SIMULATION REPORT
+============================================================
+Generated: 2026-06-06 04:30:38.002680
+
+Password Length : 8
+Character Set   : 62
+Total Keyspace  : 218,340,105,584,896
+
+Basic CPU (1K/sec)
+----------------------------------------
+Years : 6923.52
+Days  : 2527084.56
+
+Modern CPU (1M/sec)
+----------------------------------------
+Years : 6.92
+Days  : 2527.08
+
+GPU Cluster (1B/sec)
+----------------------------------------
+Years : 0.01
+Days  : 2.53
+
