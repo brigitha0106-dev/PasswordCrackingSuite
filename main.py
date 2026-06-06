@@ -1,80 +1,136 @@
-from modules.password_auditor import (
-    PasswordAuditor
-)
+import os
 
-from modules.report_generator import (
-    ReportGenerator
-)
+from modules.password_auditor import PasswordAuditor
+from modules.report_generator import ReportGenerator
 
 
-def menu():
+def clear():
+    os.system("clear")
 
-    print("\n")
 
-    print(
-        "PASSWORD CRACKING & "
-        "CREDENTIAL ATTACK SUITE"
+def pause():
+    input("\nPress Enter to continue...")
+
+
+def password_audit():
+
+    password = input("\nEnter Password: ")
+
+    result = PasswordAuditor.audit(password)
+
+    print("\nAUDIT RESULTS")
+    print("=" * 50)
+
+    for key, value in result.items():
+        print(f"{key}: {value}")
+
+    pdf = ReportGenerator.generate(result)
+
+    print(f"\nReport Saved: {pdf}")
+
+    pause()
+
+
+def dictionary_generator():
+
+    os.system(
+        "python modules/dictionary_generator.py"
     )
 
-    print("=" * 60)
+    pause()
 
-    print("1. Password Audit")
 
-    print("2. Exit")
+def hash_generator():
 
-    choice = input(
-        "\nSelect Option: "
+    os.system(
+        "python modules/hash_generator.py"
     )
 
-    return choice
+    pause()
+
+
+def hash_identifier():
+
+    os.system(
+        "python modules/hash_identifier.py"
+    )
+
+    pause()
+
+
+def brute_force():
+
+    os.system(
+        "python modules/bruteforce_simulator.py"
+    )
+
+    pause()
+
+
+def shadow_parser():
+
+    os.system(
+        "python modules/shadow_parser.py"
+    )
+
+    pause()
+
+
+def hash_extractor():
+
+    os.system(
+        "python modules/hash_extractor.py"
+    )
+
+    pause()
 
 
 while True:
 
-    option = menu()
+    clear()
 
-    if option == "1":
+    print("=" * 60)
+    print("PASSWORD CRACKING & CREDENTIAL ATTACK SUITE")
+    print("=" * 60)
 
-        password = input(
-            "\nEnter Password: "
-        )
+    print("1. Password Audit")
+    print("2. Dictionary Generator")
+    print("3. Hash Generator")
+    print("4. Hash Identifier")
+    print("5. Brute Force Simulator")
+    print("6. Shadow Parser")
+    print("7. Hash Extractor")
+    print("8. Exit")
 
-        result = (
-            PasswordAuditor.audit(
-                password
-            )
-        )
+    choice = input("\nSelect Option: ")
 
-        print("\nAUDIT RESULT")
+    if choice == "1":
+        password_audit()
 
-        print("=" * 40)
+    elif choice == "2":
+        dictionary_generator()
 
-        for key, value in result.items():
+    elif choice == "3":
+        hash_generator()
 
-            print(
-                f"{key}: {value}"
-            )
+    elif choice == "4":
+        hash_identifier()
 
-        pdf = (
-            ReportGenerator.generate(
-                result
-            )
-        )
+    elif choice == "5":
+        brute_force()
 
-        print(
-            f"\nReport Saved: {pdf}"
-        )
+    elif choice == "6":
+        shadow_parser()
 
-    elif option == "2":
+    elif choice == "7":
+        hash_extractor()
 
-        print(
-            "\nExiting Toolkit..."
-        )
+    elif choice == "8":
 
+        print("\nExiting Toolkit...")
         break
 
     else:
 
-        print(
-            "\nInvalid Option"
-        )
+        print("\nInvalid Option")
+        pause()
