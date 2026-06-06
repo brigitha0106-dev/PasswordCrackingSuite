@@ -1,0 +1,16 @@
+SHADOW FILE ANALYSIS REPORT
+============================================================
+Generated: 2026-06-06 04:33:17.412464
+
+User      : root
+Algorithm : SHA512
+Hash      : $6$randomsalt$abcdef1234567890...
+----------------------------------------
+User      : john
+Algorithm : SHA256
+Hash      : $5$anothersalt$xyz1234567890...
+----------------------------------------
+User      : guest
+Algorithm : MD5
+Hash      : $1$testsalt$123456789abcdef...
+----------------------------------------
