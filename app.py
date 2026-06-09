@@ -70,12 +70,12 @@ html, body, [class*="css"] {
 }
 
 /* ── Input card ── */
-.input-card {
+div[data-testid="stTextInput"] {
     background: #141720;
     border: 1px solid #1e293b;
     border-radius: 12px;
-    padding: 1.5rem 1.5rem 1.25rem;
-    margin-bottom: 1.25rem;
+    padding: 1rem 1rem 0.75rem;
+    margin-bottom: 0.5rem;
 }
 .input-label {
     font-size: 0.75rem;
@@ -315,19 +315,18 @@ def risk_class(risk: str) -> str:
 
 def ring_svg(score: int, color: str) -> str:
     radius = 30
-    circ   = 2 * 3.14159 * radius
-    offset = circ * (1 - score / 100)
-    return f"""
-    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-      <circle class="ring-bg"  cx="40" cy="40" r="{radius}" />
-      <circle class="ring-fill" cx="40" cy="40" r="{radius}"
-        stroke="{color}"
-        stroke-dasharray="{circ:.1f}"
-        stroke-dashoffset="{offset:.1f}"
-      />
-    </svg>
-    <div class="ring-label">{score}</div>
-    """
+    circ   = round(2 * 3.14159 * radius, 1)
+    offset = round(circ * (1 - score / 100), 1)
+    return (
+        '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">'
+        '<circle class="ring-bg" cx="40" cy="40" r="' + str(radius) + '" />'
+        '<circle class="ring-fill" cx="40" cy="40" r="' + str(radius) + '"'
+        ' stroke="' + color + '"'
+        ' stroke-dasharray="' + str(circ) + '"'
+        ' stroke-dashoffset="' + str(offset) + '" />'
+        '</svg>'
+        '<div class="ring-label">' + str(score) + '</div>'
+    )
 
 
 # ── Page header ──────────────────────────────────────────────────────────────
@@ -342,7 +341,6 @@ st.markdown("""
 
 
 # ── Input card ───────────────────────────────────────────────────────────────
-st.markdown('<div class="input-card">', unsafe_allow_html=True)
 st.markdown('<p class="input-label">Password to Audit</p>', unsafe_allow_html=True)
 password = st.text_input(
     label="password_field",
@@ -351,7 +349,6 @@ password = st.text_input(
     label_visibility="collapsed",
 )
 analyze = st.button("Run Security Audit →")
-st.markdown('</div>', unsafe_allow_html=True)
 
 
 # ── Results ──────────────────────────────────────────────────────────────────
@@ -507,7 +504,6 @@ st.markdown("""
     color:#64748b;
     font-size:12px;
 ">
-Password Cracking &amp; Credential Attack Suite<br>
-Cybersecurity Internship Project • Version 1.0
+Password Cracking &amp; Credential Attack Suite • Version 1.0
 </div>
 """, unsafe_allow_html=True)
