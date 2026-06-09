@@ -60,7 +60,7 @@ The project is intended for educational and cybersecurity awareness purposes onl
   * Modern CPU
   * GPU Cluster
 
- 📄 Security Report Generator
+ 📄 Security Report Generator(CLI Module)
 
 * Generates PDF security audit reports
 * Includes:
@@ -69,7 +69,13 @@ The project is intended for educational and cybersecurity awareness purposes onl
   * Entropy values
   * Risk ratings
   * Recommendations
+## Additional CLI Modules
 
+The project also includes command-line utilities:
+
+- Hash Extractor
+- Shadow Parser
+- PDF Security Report Generator
 ---
 ## Technology Stack
 
@@ -110,7 +116,7 @@ Streamlit Web Interface
 Security Analysis Engine
  │
  ▼
-PDF Report Generation
+PDF Report Generator(CLI Module)
 ```
 
 ---
@@ -148,9 +154,7 @@ The application is deployed using Streamlit Community Cloud.
 
 ### Live Demo
 
-Add your Streamlit deployment URL here:
-
-https://YOUR-STREAMLIT-APP.streamlit.app
+https://password-cracking-suite.streamlit.app
 
 ---
 
@@ -193,8 +197,7 @@ streamlit run app.py
 * Brute-force attack simulations
 * Security audit PDF reports
 
----
-
+-----
 ## Educational Disclaimer
 
 This project is developed strictly for educational, research, and cybersecurity awareness purposes. All password-cracking activities are simulated and performed within controlled environments. The project must not be used against systems without proper authorization.
