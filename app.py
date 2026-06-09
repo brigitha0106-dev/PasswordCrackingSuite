@@ -291,7 +291,7 @@ GUESS_RATES = {
 st.markdown("""
 <div class="header-bar"><span class="badge">Cybersecurity</span></div>
 <p class="header-title">PassAudit</p>
-<p class="header-subtitle">Password Cracking &amp; Credential Attack Suite — Cybersecurity Internship Project</p>
+<p class="header-subtitle">Password Cracking &amp; Credential Attack Suite </p>
 <div class="divider"></div>
 """, unsafe_allow_html=True)
 
